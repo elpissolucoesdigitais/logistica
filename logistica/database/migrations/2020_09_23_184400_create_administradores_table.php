@@ -21,6 +21,8 @@ class CreateAdministradoresTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->unsignedInteger('entrega_id');
+            $table->foreign('entrega_id')->references('id')->on('entregas');
         });
     }
 

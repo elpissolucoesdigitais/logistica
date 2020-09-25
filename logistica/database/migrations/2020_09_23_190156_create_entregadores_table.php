@@ -33,8 +33,10 @@ class CreateEntregadoresTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('estado_id');
             $table->unsignedInteger('cidade_id');	
+            $table->unsignedInteger('entrega_id'); 
             $table->foreign('estado_id')->references('id')->on('estados');
             $table->foreign('cidade_id')->references('id')->on('cidades');
+            $table->foreign('entrega_id')->references('id')->on('entregas');
         });
     }
 

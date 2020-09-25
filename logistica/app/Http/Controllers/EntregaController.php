@@ -50,7 +50,16 @@ class entregaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $cad= $this->objEntrega->create([
+            'produto'=>$request->produto,
+            'quantidade'=>$request->quantidadeproduto,
+            'categoria'=>$request->categoria,
+            'enderecoentrega'=>$request->enderecoentrga,
+            'enderecocoleta'=>$request->enderecocoleta,
+        ]);
+        if($cad){
+            return redirect('entrega');
+        }
     }
 
     /**

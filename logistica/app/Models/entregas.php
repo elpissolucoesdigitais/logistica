@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class entregas extends Model
 {
+    protected $fillable=['produto','quantidadeproduto','categoria','enderecoentrga','enderecocoleta'];
     protected $table = 'entregas';
 
     public function relEntregas()
