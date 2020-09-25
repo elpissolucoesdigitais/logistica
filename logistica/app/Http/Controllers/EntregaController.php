@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\entregas;
+use App\Models\clientes;
+use App\Models\fornecedores;
+use App\Models\entregadores;
 
-class EntregaController extends Controller
+class entregaController extends Controller
 {
-    private $entrega;
-    public function __construct(Product $entrega)
-    {
-        $this->entrega = $entrega;
+    private $objEntrega;
+    private $objCliente;
+    private $objEntregador;
+    public function __construct(){
+        $this->objEntrega = new Entregas();
+        $this->objCliente = new Clientes();
+        $this->objEntregador = new entregadores();
     }
     /**
      * Display a listing of the resource.
@@ -18,8 +25,10 @@ class EntregaController extends Controller
      */
     public function index()
     {
-        $entrega = $this->entrega->paginate(10);
-        return view('fornecedor.entrega.index', compact('entregas'));
+        //dd($this->objEntregador->all());
+        //dd($this->objEntrega->all());
+        $entrega= $this->objEntrega->all();
+        return view('fornecedor.entrega.index',compact('entrega'));
     }
 
     /**
@@ -29,7 +38,8 @@ class EntregaController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('fornecedor.entrega.create');
     }
 
     /**
@@ -40,7 +50,16 @@ class EntregaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $cad= $this->objEntrega->create([
+            'produto'=>$request->produto,
+            'quantidade'=>$request->quantidadeproduto,
+            'categoria'=>$request->categoria,
+            'enderecoentrega'=>$request->enderecoentrga,
+            'enderecocoleta'=>$request->enderecocoleta,
+        ]);
+        if($cad){
+            return redirect('entrega');
+        }
     }
 
     /**
@@ -51,7 +70,8 @@ class EntregaController extends Controller
      */
     public function show($id)
     {
-        //
+        $entrega = $this->objEntrega->find($id);
+        return view('fornecedor.entrega.show',compact('entrega'));
     }
 
     /**
@@ -72,13 +92,9 @@ class EntregaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EntregaRequest $request, $entrega)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $entrega=$this->entrega->find($entrega);
-        $entrega->update($data);
-        flash('Frete Atualizado com sucesso')->success();
-        return redirect()->route('admin.entrega.index'); 
+        //
     }
 
     /**
@@ -89,9 +105,6 @@ class EntregaController extends Controller
      */
     public function destroy($id)
     {
-        $entrega=$this->entrega->find($entrega);
-        $entrega->delete();
-        flash('Produto ' .$entrega->name.' Deletado com sucesso')->success();
-        return redirect()->route('admin.entrega.index');
+        //
     }
 }

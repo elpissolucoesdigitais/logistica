@@ -29,15 +29,11 @@ Route::group(['middleware'=>['auth']], function()
                 Route::get('destroy/{store}','StoreController@destroy')->name('destroy');
             }
         );*/
-        Route::resource('entrega','EntregaController');
+        //Route::resource('entrega','EntregaController');
     });
 });
-Route::get('create', function () {
-    return view('fornecedor.entrega.create');
-});
-Route::get('edit', function () {
-    return view('fornecedor.entrega.edit');
-});
-Route::get('index', function () {
-    return view('fornecedor.entrega.index');
-});
+Route::resource('entrega', 'entregaController');
+//Route::resource('show', 'entregaController');
+//Route::resource('create', 'entregaController');
+
+
