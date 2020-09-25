@@ -33,6 +33,7 @@ Route::group(['middleware'=>['auth']], function()
     });
 });
 Route::resource('entrega', 'entregaController');
+Route::resource('cidade', 'cidadeController');
 //Route::resource('show', 'entregaController');
 //Route::resource('create', 'entregaController');
 
