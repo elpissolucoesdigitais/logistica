@@ -18,30 +18,22 @@ class CreateEntregasTable extends Migration
             $table->timestamps();
             $table->date('datapedido');
             $table->string('produto');
-            $table->integer('quantidadeproduto');
+            $table->string('quantidadeproduto');
             $table->string('categoria');
-            $table->decimal('kminicial');
-            $table->decimal('kmfinal');
             $table->string('enderecoentrga');
             $table->string('enderecocoleta');
+            $table->string('bairro');
             $table->date('datasaida');
-            $table->decimal('qtdcombustivel');
-            $table->decimal('totaldias');
-            $table->decimal('kmrodados');
             $table->decimal('valorbruto');
             $table->decimal('comissaomotorista');
-            $table->decimal('valorliquido');
-            $table->decimal('mediaveiculo');
-            $table->date('datachegada');
-            $table->decimal('despesas');
-            $table->unsignedInteger('cliente_id');	
+            $table->date('datachegada');	
             $table->unsignedInteger('fornecedor_id');
-            $table->unsignedInteger('entregador_id');
-            $table->unsignedInteger('administrador_id');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->unsignedInteger('estado_id');
+            $table->unsignedInteger('cidade_id');
             $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
-            $table->foreign('entregador_id')->references('id')->on('entregadores');
-            $table->foreign('administrador_id')->references('id')->on('administradores');
+            $table->foreign('estado_id')->references('id')->on('estados');
+            $table->foreign('cidade_id')->references('id')->on('cidades');
+            
         });
     }
 

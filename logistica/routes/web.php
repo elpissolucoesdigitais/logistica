@@ -36,4 +36,6 @@ Route::resource('entrega', 'entregaController');
 //Route::resource('show', 'entregaController');
 //Route::resource('create', 'entregaController');
 
+Route::resource('veiculo', 'veiculoController');
+
 
