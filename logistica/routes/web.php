@@ -37,4 +37,6 @@ Route::resource('cidade', 'cidadeController');
 //Route::resource('show', 'entregaController');
 //Route::resource('create', 'entregaController');
 
+Route::resource('veiculo', 'veiculoController');
+
 
