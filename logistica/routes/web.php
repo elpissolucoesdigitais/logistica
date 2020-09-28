@@ -37,5 +37,5 @@ Route::resource('entrega', 'entregaController');
 //Route::resource('create', 'entregaController');
 
 Route::resource('veiculo', 'veiculoController');
-
-
+Route::resource('veiculo/{id}/edit', 'entregaController@edit');
+// http://127.0.0.1:8000/veiculo/2/edit

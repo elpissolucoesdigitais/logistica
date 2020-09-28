@@ -29,6 +29,7 @@
                 @foreach ($veiculo as $veiculos) 
                     @php
                         //$veiculo=$veiculos->find($veiculos->id)->relveiculo;
+                        
                     @endphp 
                     <tr>
                       <th scope="row">{{$veiculos->id}}</th>
@@ -40,19 +41,21 @@
                       <td>{{$veiculos->ano}}</td>
                       <td>{{$veiculos->cor}}</td>
                       <td>{{$veiculos->entregador_id}}</td>
+                         
                       <td>
-                        <a href="{{url("cadastro/$veiculos->id")}}">
+                        <a href="{{url("veiculo/$veiculos->id")}}">
                           <button class="btn btn-dark">Visualizar</button>
                         </a>
-                      <a href="">
+                        <a href="{{url("veiculo/$veiculos->id/edit")}}">
                           <button class="btn btn-primary">Editar</button>
                         </a>
                         <a href="">
                           <button class="btn btn-danger">Deletar</button>
                         </a>
                       </td>
-                    </tr>
-                @endforeach
+                    </tr> 
+                  @endforeach
+
               
             </tbody>
           </table>
