@@ -34,7 +34,8 @@ class veiculoController extends Controller
      */
     public function create()
     {
-        return view('veiculo.entrega.create');
+        $entregador=$this->objEntregador->all();
+        return view('veiculo.entrega.create',compact('entregador'));
     }
 
     /**
@@ -45,6 +46,8 @@ class veiculoController extends Controller
      */
     public function store(Request $request)
     {
+        //`id`, `placa`, `modelo`, `marca`, `tipo`, `renavam`, `ano`, `cor`,
+        // `remember_token`, `created_at`, `updated_at`, `entregador_id`
         $cad= $this->objVeiculo->create([
             'placa'=>$request->placa,
             'modelo'=>$request->modelo,
@@ -53,8 +56,9 @@ class veiculoController extends Controller
             'renavam'=>$request->renavam,
             'ano'=>$request->ano,
             'cor'=>$request->cor,
-            'created_at'=>$request->created_at,
-            'updated_at'=>$request->updated_at,
+            // 'remember_token'=>$request->remember_token,
+            // 'created_at'=>$request->created_at,
+            // 'updated_at'=>$request->updated_at,
             'entregador_id'=>$request->entregador_id,
         ]);
         if($cad){
@@ -82,7 +86,9 @@ class veiculoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $veiculo=$this->objVeiculo->find($id);
+        $entregador=$this->objEntregador->all();
+        return view('create',compact('veiculo','entregador'));
     }
 
     /**
@@ -94,7 +100,17 @@ class veiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->objVeiculo->where(['id'=>$id])->update([
+            'placa'=>$request->placa,
+            'modelo'=>$request->modelo,
+            'marca'=>$request->marca,
+            'tipo'=>$request->tipo,
+            'renavam'=>$request->renavam,
+            'ano'=>$request->ano,
+            'cor'=>$request->cor,
+            'entregador_id'=>$request->entregador_id,
+        ]);
+            return redirect('veiculo');
     }
 
     /**

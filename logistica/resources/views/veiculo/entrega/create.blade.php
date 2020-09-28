@@ -14,8 +14,13 @@
             <input class="form-control" type="text" name="renavam" id="renavam" placeholder="Renavan">
             <input class="form-control" type="text" name="ano" id="ano" placeholder="Ano">
             <input class="form-control" type="text" name="cor" id="cor" placeholder="Cor">
-            <input class="form-control" type="text" name="entregador_id" id="entregador_id" placeholder="Entregador">
-            <input class="btn btn-success" type="submit" value="Cadastrar">
+            <select class="form-control" name="entregador_id" id="entregador_id">
+                <option value="">entregador</option>
+                @foreach($entregador as $entregadores)
+                    <option value="{{$entregadores->id}}">{{$entregadores->nome}}</option>
+                @endforeach
+             </select>   
+             <input class="btn btn-success" type="submit" value="Cadastrar">
         </form>
     </div>
 @endsection

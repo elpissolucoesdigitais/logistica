@@ -9,6 +9,6 @@ class entregadores extends Model
     protected $table = 'entregadores';
     public function relEntregadores() 
     {
-        return $this->hasOne('App\Models\entregadores','id','id');
+        return $this->hasOne('App\Models\entregadores','id');
     }
 }
